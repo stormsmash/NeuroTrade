@@ -263,7 +263,11 @@ export function QuantumDeskPanel() {
                     <SignalCounter
                       value={metric.value}
                       decimals={metric.decimals}
-                      prefix={metric.prefix}
+                      prefix={
+                        locale === "th" && metric.prefix === "+$"
+                          ? "+฿"
+                          : metric.prefix
+                      }
                       suffix={metric.suffix}
                     />
                   </p>

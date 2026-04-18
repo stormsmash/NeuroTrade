@@ -62,7 +62,7 @@ const plans: Record<Locale, Plan[]> = {
   th: [
     {
       name: "Scout",
-      price: "$39",
+      price: "฿1,390",
       tagline: "สำหรับเทรดเดอร์เดี่ยวที่ต้องการ AI คัดสัญญาณอย่างชัดเจน",
       perks: [
         "เพลย์บุ๊กกลยุทธ์ 3 แบบ",
@@ -73,7 +73,7 @@ const plans: Record<Locale, Plan[]> = {
     },
     {
       name: "Vector",
-      price: "$99",
+      price: "฿3,490",
       tagline: "สำหรับสายความเร็วสูงที่เทรดหลายคู่พร้อมกัน",
       perks: [
         "เพลย์บุ๊กไม่จำกัด",
@@ -85,7 +85,7 @@ const plans: Record<Locale, Plan[]> = {
     },
     {
       name: "Apex Desk",
-      price: "$249",
+      price: "฿8,790",
       tagline: "สำหรับทีมเทรดที่ผสานแนวทางคนและระบบอัตโนมัติ",
       perks: [
         "พื้นที่ทำงานสำหรับทีม",
