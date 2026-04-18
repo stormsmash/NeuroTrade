@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NeuroTrade Landing Page
 
-## Getting Started
+Futuristic AI trading landing page built with Next.js App Router, TypeScript, Tailwind CSS, Framer Motion, Zustand, shadcn/ui, and React Three Fiber.
 
-First, run the development server:
+## Live Demo
+
+- URL: [http://superlative-creponne-ce95a2.netlify.app](http://superlative-creponne-ce95a2.netlify.app)
+- Password: `My-Drop-Site`
+
+> Note: This is a Netlify anonymous drop preview. It should be claimed in Netlify to make it permanent.
+
+## Highlights
+
+- Immersive hero with mouse parallax and subtle 3D object
+- Custom multilingual experience (`TH / EN`) with localized copy and currency
+- Counterfactual Forge Lab (what-if execution simulator)
+- Animated metrics, staggered feature reveals, and premium glassmorphism UI
+- Accessibility upgrades (`focus-visible`, skip link, reduced motion handling)
+- Analytics events for CTA clicks, section jumps, scroll depth, language switch, and lead form submits
+
+## Tech Stack
+
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- shadcn/ui
+- Zustand
+- React Three Fiber (`@react-three/fiber`, `@react-three/drei`)
+- Lucide React
+
+## Run Locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+app/
+components/
+  sections/
+  ui/
+hooks/
+lib/
+public/
+```
