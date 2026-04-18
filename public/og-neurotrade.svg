@@ -1,0 +1,43 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 80) rotate(34) scale(760 460)">
+      <stop stop-color="#22D3EE" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#22D3EE" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="b" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(980 120) rotate(153) scale(740 420)">
+      <stop stop-color="#A78BFA" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#A78BFA" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="c" x1="120" y1="460" x2="1080" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#34D399"/>
+      <stop offset="0.45" stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="0" fill="#050B18"/>
+  <rect width="1200" height="630" fill="url(#a)"/>
+  <rect width="1200" height="630" fill="url(#b)"/>
+
+  <g opacity="0.35">
+    <path d="M0 510H1200" stroke="white" stroke-opacity="0.18"/>
+    <path d="M0 420H1200" stroke="white" stroke-opacity="0.12"/>
+    <path d="M0 330H1200" stroke="white" stroke-opacity="0.08"/>
+    <path d="M0 240H1200" stroke="white" stroke-opacity="0.06"/>
+  </g>
+
+  <rect x="92" y="102" width="180" height="180" rx="44" fill="#081427" stroke="url(#c)" stroke-width="8"/>
+  <path d="M140 212L170 180L194 194L232 150" stroke="url(#c)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="140" cy="212" r="6" fill="#34D399"/>
+  <circle cx="170" cy="180" r="6" fill="#22D3EE"/>
+  <circle cx="194" cy="194" r="6" fill="#A78BFA"/>
+  <circle cx="232" cy="150" r="6" fill="#67E8F9"/>
+
+  <text x="304" y="198" fill="white" font-size="76" font-family="'Orbitron', 'Segoe UI', sans-serif" letter-spacing="2">NEUROTRADE</text>
+  <text x="304" y="258" fill="#A7B0C9" font-size="34" font-family="'Space Grotesk', 'Segoe UI', sans-serif">Trade Smarter with AI</text>
+  <text x="304" y="316" fill="#CBD5E1" fill-opacity="0.9" font-size="28" font-family="'Space Grotesk', 'Segoe UI', sans-serif">
+    Adaptive execution • Live risk telemetry • Premium command surface
+  </text>
+
+  <path d="M112 484C236 430 298 372 394 402C460 422 520 500 608 458C682 422 742 308 838 334C920 356 968 438 1086 386"
+    stroke="url(#c)" stroke-width="8" stroke-linecap="round"/>
+</svg>

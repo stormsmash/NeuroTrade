@@ -133,6 +133,11 @@
     background: color-mix(in oklab, var(--glow-cyan) 45%, transparent);
     color: #fff;
   }
+
+  :is(a, button, input, select, textarea):focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--glow-cyan) 78%, white 12%);
+    outline-offset: 2px;
+  }
 }
 
 @layer utilities {
@@ -239,5 +244,42 @@
   }
   50% {
     box-shadow: 0 0 0 10px rgb(79 245 203 / 0), 0 0 70px rgb(79 245 203 / 0.3);
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    /* Fixed backgrounds can jitter on mobile browsers during scroll. */
+    background-attachment: scroll;
+  }
+
+  body::before {
+    opacity: 0.06;
+  }
+
+  .hero-orb {
+    filter: blur(46px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .floaty,
+  .floaty-slow,
+  .floaty-fast,
+  .pulse-glow,
+  .scan-lines {
+    animation: none !important;
   }
 }

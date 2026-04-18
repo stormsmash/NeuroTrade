@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useInterfaceStore, type Locale } from "@/hooks/useStore";
+import { trackEvent } from "@/lib/analytics";
 import { motion } from "framer-motion";
 import { ArrowRight, CirclePlay, Radar } from "lucide-react";
 import dynamic from "next/dynamic";
@@ -10,7 +11,7 @@ import { useEffect, useRef } from "react";
 const OrbitalCore = dynamic(() => import("@/components/sections/orbital-core"), {
   ssr: false,
   loading: () => (
-    <div className="glass-panel h-full min-h-72 w-full animate-pulse rounded-[1.5rem]" />
+    <div className="glass-panel h-full min-h-64 w-full animate-pulse rounded-[1.5rem] sm:min-h-72" />
   ),
 });
 
@@ -92,10 +93,11 @@ export function SignalHeroArc() {
 
   const handlePointerLeave = () => setCursor({ x: 0, y: 0 });
 
-  const jumpTo = (id: string) => {
+  const jumpTo = (id: string, source: "hero_primary" | "hero_secondary") => {
     document.getElementById(id)?.scrollIntoView({
       behavior: motionEnabled ? "smooth" : "auto",
     });
+    trackEvent("section_jump", { target: id, source });
   };
 
   return (
@@ -103,40 +105,43 @@ export function SignalHeroArc() {
       id="mission"
       onMouseMove={handlePointerMove}
       onMouseLeave={handlePointerLeave}
-      className="relative mx-auto w-full max-w-7xl px-4 pb-20 pt-20 md:px-8 md:pb-24 md:pt-28"
+      className="relative mx-auto w-full max-w-7xl px-4 pb-14 pt-16 sm:pb-20 sm:pt-20 md:px-8 md:pb-24 md:pt-28"
     >
-      <div className="hero-orb floaty left-[-120px] top-14 size-[320px] bg-cyan-300/30" />
-      <div className="hero-orb floaty-slow right-[-110px] top-[130px] size-[300px] bg-violet-300/26" />
-      <div className="hero-orb floaty-fast bottom-4 left-[26%] size-[240px] bg-emerald-300/20" />
+      <div className="hero-orb floaty left-[-90px] top-10 size-[220px] bg-cyan-300/30 sm:left-[-120px] sm:top-14 sm:size-[320px]" />
+      <div className="hero-orb floaty-slow right-[-80px] top-[120px] size-[210px] bg-violet-300/26 sm:right-[-110px] sm:top-[130px] sm:size-[300px]" />
+      <div className="hero-orb floaty-fast bottom-3 left-[20%] size-[170px] bg-emerald-300/20 sm:bottom-4 sm:left-[26%] sm:size-[240px]" />
 
-      <div className="relative grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+      <div className="relative grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-10">
         <motion.div
           initial={{ opacity: 0, y: 26 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.2, 0.9, 0.24, 1] }}
           style={motionEnabled ? { x: cursor.x * 12, y: cursor.y * 14 } : undefined}
-          className="space-y-7"
+          className="space-y-6 sm:space-y-7"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200/20 bg-emerald-200/10 px-3 py-1 text-xs tracking-[0.14em] text-emerald-100/85">
+          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200/20 bg-emerald-200/10 px-3 py-1 text-[11px] tracking-[0.12em] text-emerald-100/85 sm:text-xs sm:tracking-[0.14em]">
             <Radar className="size-3.5" />
             {copy.badge}
           </div>
 
-          <h1 className="font-heading text-5xl leading-[1.02] tracking-tight text-white md:text-6xl xl:text-7xl">
+          <h1 className="font-heading text-4xl leading-[1.02] tracking-tight text-white sm:text-5xl md:text-6xl xl:text-7xl">
             {copy.heading}
           </h1>
 
-          <p className="text-balance max-w-xl text-base text-zinc-300 md:text-lg">
+          <p className="text-balance max-w-xl text-sm text-zinc-300 sm:text-base md:text-lg">
             <span className="bg-gradient-to-r from-cyan-200 via-emerald-100 to-violet-200 bg-clip-text font-medium text-transparent">
               {copy.glowLine}
             </span>{" "}
             {copy.body}
           </p>
 
-          <div className="flex flex-wrap items-center gap-3 pt-1">
+          <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap sm:items-center">
             <Button
-              onClick={() => jumpTo("pricing")}
-              className="h-11 rounded-full border border-emerald-100/30 bg-gradient-to-r from-emerald-300/90 via-cyan-300/95 to-violet-300/90 px-6 text-sm font-semibold text-[#041022] transition-transform hover:scale-[1.03]"
+              onClick={() => {
+                trackEvent("cta_click", { cta: "hero_primary", source: "hero" });
+                jumpTo("pricing", "hero_primary");
+              }}
+              className="h-10 w-full justify-center rounded-full border border-emerald-100/30 bg-gradient-to-r from-emerald-300/90 via-cyan-300/95 to-violet-300/90 px-6 text-sm font-semibold text-[#041022] transition-transform hover:scale-[1.03] sm:h-11 sm:w-auto"
             >
               {copy.primaryCta}
               <ArrowRight className="size-4" />
@@ -144,15 +149,18 @@ export function SignalHeroArc() {
 
             <Button
               variant="outline"
-              onClick={() => jumpTo("interface")}
-              className="h-11 rounded-full border-white/20 bg-white/4 px-6 text-sm text-zinc-100 hover:border-cyan-200/40 hover:bg-cyan-200/8"
+              onClick={() => {
+                trackEvent("cta_click", { cta: "hero_secondary", source: "hero" });
+                jumpTo("interface", "hero_secondary");
+              }}
+              className="h-10 w-full justify-center rounded-full border-white/20 bg-white/4 px-6 text-sm text-zinc-100 hover:border-cyan-200/40 hover:bg-cyan-200/8 sm:h-11 sm:w-auto"
             >
               <CirclePlay className="size-4" />
               {copy.secondaryCta}
             </Button>
           </div>
 
-          <div className="grid max-w-lg grid-cols-2 gap-3 pt-2 text-xs text-zinc-300 md:grid-cols-3">
+          <div className="grid max-w-lg grid-cols-1 gap-3 pt-2 text-xs text-zinc-300 sm:grid-cols-2 md:grid-cols-3">
             {copy.metrics.map(([value, label]) => (
               <div
                 key={label}
@@ -174,9 +182,9 @@ export function SignalHeroArc() {
           }
           className="relative"
         >
-          <div className="glass-panel neon-border relative h-[420px] overflow-hidden rounded-[1.75rem] p-3 md:h-[470px]">
+          <div className="glass-panel neon-border relative h-[320px] overflow-hidden rounded-[1.75rem] p-3 sm:h-[380px] md:h-[470px]">
             <div className="scan-lines pointer-events-none absolute inset-0 opacity-25" />
-            <div className="absolute left-5 top-5 rounded-full border border-white/20 bg-black/40 px-3 py-1 text-[11px] text-zinc-300">
+            <div className="absolute left-3 top-3 rounded-full border border-white/20 bg-black/40 px-2.5 py-1 text-[10px] text-zinc-300 sm:left-5 sm:top-5 sm:px-3 sm:text-[11px]">
               {copy.orbLabel}
             </div>
             <div className="h-full w-full overflow-hidden rounded-[1.2rem] bg-gradient-to-br from-cyan-400/8 via-white/0 to-violet-400/14">

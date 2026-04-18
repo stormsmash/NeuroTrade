@@ -5,7 +5,9 @@ import { useInterfaceStore } from "@/hooks/useStore";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { AfterglowDock } from "./afterglow-dock";
+import { CounterfactualForgeLab } from "./counterfactual-forge-lab";
 import { EdgeLattice } from "./edge-lattice";
+import { EngagementTelemetry } from "./engagement-telemetry";
 import { FinalImpulseBand } from "./final-impulse-band";
 import { FluxPulseNav } from "./flux-pulse-nav";
 import { QuantumDeskPanel } from "./quantum-desk-panel";
@@ -25,6 +27,7 @@ export function NeonCitadelLanding() {
 
   return (
     <div className={cn("relative overflow-x-clip", neonBoost && "neon-boost")}>
+      <EngagementTelemetry />
       <AnimatePresence>{booting ? <StellarLoader /> : null}</AnimatePresence>
 
       <div className="pointer-events-none fixed inset-0 -z-20">
@@ -49,6 +52,7 @@ export function NeonCitadelLanding() {
       >
         <SignalHeroArc />
         <QuantumDeskPanel />
+        <CounterfactualForgeLab />
         <EdgeLattice />
         <TriadSignalPricing />
         <FinalImpulseBand />
