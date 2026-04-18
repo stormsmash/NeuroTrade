@@ -4,10 +4,7 @@ Futuristic AI trading landing page built with Next.js App Router, TypeScript, Ta
 
 ## Live Demo
 
-- URL: [http://thunderous-chaja-c8e566.netlify.app](http://thunderous-chaja-c8e566.netlify.app)
-- Password: `My-Drop-Site`
-
-> Note: This is a Netlify anonymous drop preview. It should be claimed in Netlify to make it permanent.
+- URL: [https://neurotrade1.netlify.app/](https://neurotrade1.netlify.app/)
 
 ## Highlights
 
